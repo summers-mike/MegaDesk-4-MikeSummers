@@ -40,5 +40,58 @@ namespace MegaDesk_3_MikeSummers
         {
 
         }
+
+        private void validatingWidth(object sender, CancelEventArgs e)
+        {
+            string errorMsg;
+            if (!ValidWidth(widthInput.Text, out errorMsg))
+            {
+                // Cancel the event and select the text to be corrected by the user.
+                e.Cancel = true;
+                widthInput.Select(0, widthInput.Text.Length);
+
+                // Set the ErrorProvider error with the text to display. 
+                this.widthErrorProvider.SetError(widthInput, errorMsg);
+            }
+        }
+
+
+        public bool ValidWidth(string myWidth, out string errorMessage)
+        {
+            // Confirm that the e-mail address string is not empty.
+            if (myWidth.Length == 0)
+            {
+                errorMessage = "A width is required.";
+                return false;
+            }
+
+            // 
+            if ((Convert.ToDecimal(myWidth) >= 24) && (Convert.ToDecimal(myWidth) <= 96))
+            {
+                errorMessage = "";
+                return true;
+            }
+
+            errorMessage = "Please enter a width between 24 and 96";
+            return false;
+        }
+
+
+
+        private void validatedWidth(object sender, EventArgs e)
+        {
+            // If all conditions have been met, clear the ErrorProvider of errors.
+            widthErrorProvider.SetError(widthInput, "");
+        }
+
+        private void validateDepth(object sender, KeyPressEventArgs e)
+        {
+            // Check for the flag being set in the KeyDown event.
+            if ((char.IsControl(e.KeyChar)) || (!char.IsDigit(e.KeyChar)))
+            {
+                // Stop the character from being entered into the control since it is non-numerical.
+                e.Handled = true;
+            }
+        }
     }
 }

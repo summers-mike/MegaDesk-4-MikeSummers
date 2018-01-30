@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.CancelAddQuote = new System.Windows.Forms.Button();
             this.dateLabel = new System.Windows.Forms.Label();
             this.clientNameLabel = new System.Windows.Forms.Label();
@@ -37,12 +38,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.widthInput = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.GetQuoteBtn = new System.Windows.Forms.Button();
+            this.widthErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.widthErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // CancelAddQuote
@@ -126,12 +129,14 @@
             this.textBox1.Size = new System.Drawing.Size(186, 20);
             this.textBox1.TabIndex = 8;
             // 
-            // textBox2
+            // widthInput
             // 
-            this.textBox2.Location = new System.Drawing.Point(85, 60);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(186, 20);
-            this.textBox2.TabIndex = 9;
+            this.widthInput.Location = new System.Drawing.Point(85, 60);
+            this.widthInput.Name = "widthInput";
+            this.widthInput.Size = new System.Drawing.Size(186, 20);
+            this.widthInput.TabIndex = 9;
+            this.widthInput.Validating += new System.ComponentModel.CancelEventHandler(this.validatingWidth);
+            this.widthInput.Validated += new System.EventHandler(this.validatedWidth);
             // 
             // textBox3
             // 
@@ -139,6 +144,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(186, 20);
             this.textBox3.TabIndex = 10;
+            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.validateDepth);
             // 
             // listBox1
             // 
@@ -194,6 +200,10 @@
             this.GetQuoteBtn.Text = "Get Quote";
             this.GetQuoteBtn.UseVisualStyleBackColor = true;
             // 
+            // widthErrorProvider
+            // 
+            this.widthErrorProvider.ContainerControl = this;
+            // 
             // AddQuote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -204,7 +214,7 @@
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.widthInput);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -216,6 +226,7 @@
             this.Controls.Add(this.CancelAddQuote);
             this.Name = "AddQuote";
             this.Text = "AddQuote";
+            ((System.ComponentModel.ISupportInitialize)(this.widthErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -232,11 +243,12 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox widthInput;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.Button GetQuoteBtn;
+        private System.Windows.Forms.ErrorProvider widthErrorProvider;
     }
 }
