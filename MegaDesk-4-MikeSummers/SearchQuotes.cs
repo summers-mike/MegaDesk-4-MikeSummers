@@ -8,16 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MegaDesk_3_MikeSummers
+namespace MegaDesk_4_MikeSummers
 {
-    public partial class DisplayQuote : Form
+    public partial class SearchQuotes : Form
     {
-        public DisplayQuote()
+        public SearchQuotes()
         {
             InitializeComponent();
         }
 
-        private void CancelDisplayQuote_Click(object sender, EventArgs e)
+        private void CancelSearchQuotes_Click(object sender, EventArgs e)
         {
             var mainMenu = (MainMenu)Tag;
             mainMenu.Show();
